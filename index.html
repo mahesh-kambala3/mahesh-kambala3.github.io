@@ -14,7 +14,7 @@
         // Load the Facebook SDK for JavaScript
         window.fbAsyncInit = function() {
             FB.init({
-                appId      : '650147551777745', // Replace with your actual Facebook App ID
+                appId      : 650147551777745, // Replace with your actual Facebook App ID
                 cookie     : true,          // Enable cookies to allow the server to access the session
                 xfbml      : true,          // Parse social plugins on this webpage
                 version    : 'v16.0'        // Use this Graph API version for this project
@@ -41,7 +41,7 @@
                     document.getElementById('status').innerHTML = 'User did not log in successfully.';
                 }
             }, {
-                config_id: '982044473329784',  // Replace with your actual Configuration ID
+                config_id: 982044473329784,  // Replace with your actual Configuration ID
                 response_type: 'code',
                 override_default_response_type: true
             });
