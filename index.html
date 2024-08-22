@@ -1,59 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Facebook Login Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Login for Business</title>
 </head>
 <body>
-    <h2>Facebook Login Example</h2>
-
-    <fb:login-button 
-        scope="public_profile,email"
-        onlogin="checkLoginState();">
-    </fb:login-button>
-
+    <h1>Facebook Login for Business Example</h1>
+    <button onclick="invokeFbLogin()">Log in with Facebook</button>
     <div id="status"></div>
 
     <script>
         // Load the Facebook SDK for JavaScript
         window.fbAsyncInit = function() {
             FB.init({
-                appId      : 650147551777745,  // Replace 'YOUR_APP_ID' with your actual Facebook App ID
-                cookie     : true,                     // Enable cookies to allow the server to access the session
-                xfbml      : true,                     // Parse social plugins on this webpage
-                version    : 'v16.0'           // Use this Graph API version for this project
+                appId      : '650147551777745', // Replace with your actual Facebook App ID
+                cookie     : true,          // Enable cookies to allow the server to access the session
+                xfbml      : true,          // Parse social plugins on this webpage
+                version    : 'v20.0'        // Use this Graph API version for this project
             });
-            
-            FB.AppEvents.logPageView();   // Log the page view event
         };
 
         // Load the SDK asynchronously
-        (function(d, s, id){
+        (function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
+            if (d.getElementById(id)) return;
             js = d.createElement(s); js.id = id;
             js.src = "https://connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
-        // Check login state function
-        function checkLoginState() {
-            FB.getLoginStatus(function(response) {
-                statusChangeCallback(response);
+        // Function to invoke Facebook Login Dialog
+        function invokeFbLogin() {
+            FB.login(function(response) {
+                console.log(response);
+                if (response.status === 'connected') {
+                    document.getElementById('status').innerHTML = 'Logged in successfully!';
+                    // Here you can redirect the user or save the auth code
+                } else {
+                    document.getElementById('status').innerHTML = 'User did not log in successfully.';
+                }
+            }, {
+                config_id: '982044473329784',  // Replace with your actual Configuration ID
+                response_type: 'code',
+                override_default_response_type: true
             });
-        }
-
-        // Callback function to handle login status
-        function statusChangeCallback(response) {
-            if (response.status === 'connected') {
-                // Logged into your webpage and Facebook.
-                FB.api('/me', {fields: 'name,email'}, function(response) {
-                    document.getElementById('status').innerHTML =
-                    'Thanks for logging in, ' + response.name + '! Your email is ' + response.email;
-                });
-            } else {
-                // Not logged in to Facebook
-                document.getElementById('status').innerHTML = 'Please log into this webpage.';
-            }
         }
     </script>
 </body>
