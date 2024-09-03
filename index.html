@@ -48,7 +48,7 @@
                 config_id: '982044473329784',  // Replace with your actual Configuration ID
                 response_type: 'code',
                 override_default_response_type: true,
-                redirect_uri: window.location.href  // Ensure this is identical to the URI used in the initial login request
+                redirect_uri: 'https://mahesh-kambala3.github.io/'  // Ensure this is identical to the URI used in the initial login request
             });
         }
 
@@ -57,7 +57,7 @@
             // Replace client_id, client_secret, and the code below with actual values
             let client_id = '484348023941968';
             let client_secret = '699a24b726d6efc48857ce2b51a6b5d5';
-            let redirect_uri = "https://mahesh-kambala3.github.io/"; // The redirect URI must match exactly
+            let redirect_uri = 'https://mahesh-kambala3.github.io/'; // The redirect URI must match exactly
 
             let url = `https://graph.facebook.com/v16.0/oauth/access_token?client_id=${client_id}&client_secret=${client_secret}&redirect_uri=${encodeURIComponent(redirect_uri)}&code=${code}`;
 
