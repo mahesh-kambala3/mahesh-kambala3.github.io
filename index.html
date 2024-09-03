@@ -35,8 +35,12 @@
             FB.login(function(response) {
                 console.log(response);
                 if (response.status === 'connected') {
+                    let authCode = response.authResponse.code; // Extract the authorization code
                     document.getElementById('status').innerHTML = 'Logged in successfully!';
-                    // Here you can redirect the user or save the auth code
+
+                    // Exchange the authorization code for an access token
+                    exchangeCodeForAccessToken(authCode);
+
                 } else {
                     document.getElementById('status').innerHTML = 'User did not log in successfully.';
                 }
@@ -45,6 +49,36 @@
                 response_type: 'code',
                 override_default_response_type: true
             });
+        }
+
+        // Function to exchange the authorization code for an access token
+        function exchangeCodeForAccessToken(code) {
+            // Replace client_id, client_secret, and the code below with actual values
+            let client_id = '484348023941968';
+            let client_secret = '699a24b726d6efc48857ce2b51a6b5d5';
+            let redirect_uri = window.location.href; // The redirect URI you set in Facebook Developer Console
+
+            let url = `https://graph.facebook.com/v16.0/oauth/access_token?client_id=${client_id}&client_secret=${client_secret}&redirect_uri=${encodeURIComponent(redirect_uri)}&code=${code}`;
+
+            // Make a request to exchange the code for an access token
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('API Response:', data); // Print the entire response
+
+                    if (data.access_token) {
+                        document.getElementById('status').innerHTML = 'Access token received!';
+                        console.log('Access Token:', data.access_token); // Print the access token
+
+                        // Use the access token for further API calls or store it for later use
+                    } else {
+                        document.getElementById('status').innerHTML = 'Failed to retrieve access token.';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('status').innerHTML = 'Error occurred while retrieving access token.';
+                });
         }
     </script>
 </body>
