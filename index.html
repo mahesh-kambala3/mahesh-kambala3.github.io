@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>**** Facebook Login for Business FB Test ****</title>
+    <title>**** Facebook Login for Business FB Test Re direction  ****</title>
 </head>
 <body>
-    <h1>**** Facebook Login for Business Test With SS ****</h1>
+    <h1>**** Facebook Login for Business Test With Re direction ****</h1>
     <button onclick="invokeFbLogin()">Log in with Facebook</button>
     <div id="status"></div>
 
@@ -57,7 +57,7 @@
             // Replace client_id, client_secret, and the code below with actual values
             let client_id = '484348023941968';
             let client_secret = '699a24b726d6efc48857ce2b51a6b5d5';
-            let redirect_uri = window.location.href; // The redirect URI must match exactly
+            let redirect_uri = "https://mahesh-kambala3.github.io/"; // The redirect URI must match exactly
 
             let url = `https://graph.facebook.com/v16.0/oauth/access_token?client_id=${client_id}&client_secret=${client_secret}&redirect_uri=${encodeURIComponent(redirect_uri)}&code=${code}`;
 
