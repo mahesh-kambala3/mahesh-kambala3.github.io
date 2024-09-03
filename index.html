@@ -59,7 +59,7 @@
             let client_secret = '687c97f63e9a0509130a910a5d65ec78';
             let redirect_uri = 'https://mahesh-kambala3.github.io/'; // The redirect URI must match exactly
 
-            let url = `https://graph.facebook.com/v16.0/oauth/access_token?client_id=${client_id}&client_secret=${client_secret}&redirect_uri=${encodeURIComponent(redirect_uri)}&code=${code}`;
+            let url = `https://graph.facebook.com/v16.0/oauth/access_token?client_id=${client_id}&client_secret=${client_secret}&code=${code}`;
 
             // Make a request to exchange the code for an access token
             fetch(url)
