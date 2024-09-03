@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>**** Facebook Login for Business FB Test Re direction  ****</title>
+    <title>**** Facebook Login for Business FB Test Old App  ****</title>
 </head>
 <body>
     <h1>**** Facebook Login for Business Test With Re direction ****</h1>
@@ -14,7 +14,7 @@
         // Load the Facebook SDK for JavaScript
         window.fbAsyncInit = function() {
             FB.init({
-                appId      : '484348023941968', // Replace with your actual Facebook App ID
+                appId      : '650147551777745', // Replace with your actual Facebook App ID
                 cookie     : true,          // Enable cookies to allow the server to access the session
                 xfbml      : true,          // Parse social plugins on this webpage
                 version    : 'v16.0'        // Use this Graph API version for this project
@@ -45,7 +45,7 @@
                     document.getElementById('status').innerHTML = 'User did not log in successfully.';
                 }
             }, {
-                config_id: '982044473329784',  // Replace with your actual Configuration ID
+                config_id: '26406137395696459',  // Replace with your actual Configuration ID
                 response_type: 'code',
                 override_default_response_type: true,
                 redirect_uri: 'https://mahesh-kambala3.github.io/'  // Ensure this is identical to the URI used in the initial login request
@@ -55,8 +55,8 @@
         // Function to exchange the authorization code for an access token
         function exchangeCodeForAccessToken(code) {
             // Replace client_id, client_secret, and the code below with actual values
-            let client_id = '484348023941968';
-            let client_secret = '699a24b726d6efc48857ce2b51a6b5d5';
+            let client_id = '650147551777745';
+            let client_secret = '687c97f63e9a0509130a910a5d65ec78';
             let redirect_uri = 'https://mahesh-kambala3.github.io/'; // The redirect URI must match exactly
 
             let url = `https://graph.facebook.com/v16.0/oauth/access_token?client_id=${client_id}&client_secret=${client_secret}&redirect_uri=${encodeURIComponent(redirect_uri)}&code=${code}`;
